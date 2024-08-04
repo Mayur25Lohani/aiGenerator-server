@@ -34,16 +34,20 @@ exports.captionController = async (req, res) => {
 
 // Controller to summarize text
 exports.summaryController = async (req, res) => {
+  console.log("Test1");
   try {
     const { text } = req.body;
+    console.log("Text: ", text);
     const result = await inference.textGeneration({
       model: 'facebook/bart-large-cnn',
       inputs: text,
       parameters: { max_new_tokens: 100, do_sample: false },
     });
-
-    res.status(200).json({ summary: result.generated_text });
+    console.log("Result: ", result)
+    // res.status(200).json({ summary: result.generated_text });
+    res.status(200).json({ summary: "result.generated_text" });
   } catch (err) {
+    console.log("Test2");
     console.error(err);
     res.status(500).json({ message: err.message });
   }
