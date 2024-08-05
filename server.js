@@ -23,7 +23,7 @@ var corsOptions = {
 };
 
 //middlewares
-app.use(cors());
+app.use(cors("https://kraftysoul-ai.onrender.com"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan("dev"));
